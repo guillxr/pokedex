@@ -1,8 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;;
   box-sizing: border-box;
 }
 
 body {
   background-color: #f6f8fc;
+}
+
+a {
+  text-decoration: none;
+  padding: -1rem;
+}
+
+.normal {
+  background-color: #a6a877;
+}
+
+.grass {
+  background-color: #77c8508d;
+}
+
+.fire {
+  background-color: #ee7f308d;
+}
+
+.water {
+  background-color: #678fee8d;
+}
+
+.electric {
+  background-color: #f7cf2e8d;
+}
+
+.ice {
+  background-color: #98d5d78d;
+}
+
+.ground {
+  background-color: #dfbf698d;
+}
+
+.flying {
+  background-color: #a98ff08d;
+}
+
+.poison {
+  background-color: #a040a08d;
+}
+
+.fighting {
+  background-color: #bf30298d;
+}
+
+.psychic {
+  background-color: #f656878d;
+}
+
+.dark {
+  background-color: #7258478d;
+}
+
+.rock {
+  background-color: #b8a1378d;
+}
+
+.bug {
+  background-color: #a8b7208d;
+}
+
+.ghost {
+  background-color: #6e58968d;
+}
+
+.steel {
+  background-color: #b9b7cf8d;
+}
+
+.dragon {
+  background-color: #6f38f68d;
+}
+
+.fairy {
+  background-color: #f9aec78d;
 }

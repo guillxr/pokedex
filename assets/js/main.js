@@ -5,12 +5,11 @@ const maxRecords = 151
 const limit = 10
 let offset = 0
 
-
 function loadPokemonItens(offset, limit) {
   pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
     const newHtml = pokemons.map((pokemon) =>
-          `<li class="pokemon ${pokemon.type}">
-              <span class="number">#${pokemon.number}</span>
+          `<li class="pokemon ${pokemon.type}" onClick=location.href="details.html?id=${pokemon.number}">
+              <span class="number">#${pokemon.number.toString().padStart(3, '0')}</span>
               <span class="name">${pokemon.name}</span>
 
               <div class="detail">
@@ -19,8 +18,8 @@ function loadPokemonItens(offset, limit) {
                 </ol>
 
                 <img src="${pokemon.photo}" alt="${pokemon.name}"/>
-            </div>
-          </li>`
+              </div>
+            </li>`
         ).join('')
     pokemonList.innerHTML += newHtml
   })
