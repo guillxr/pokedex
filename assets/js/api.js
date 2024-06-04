@@ -38,4 +38,3 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
     .then((detailRequests) => Promise.all(detailRequests))
     .then((pokemonsDetails) => pokemonsDetails)
 }
-
