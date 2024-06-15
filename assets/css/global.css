@@ -15,6 +15,7 @@ a {
   padding: -1rem;
 }
 
+/* background card */
 .normal {
   background-color: #e1e1cb;
 }
@@ -87,3 +88,76 @@ a {
   background-color: #fcf0f4;
 }
 
+/* background-types-icon */
+
+.bug-icon {
+  background: #92BC2C;
+}
+
+.dark-icon {
+  background: #595761;
+}
+
+.dragon-icon {
+  background: #0C69C8;
+}
+
+.electric-icon {
+  background: #F2D94E;
+}
+
+.fire-icon {
+  background: #FBA54C;
+}
+
+.fairy-icon {
+  background: #EE90E6;
+}
+
+.fighting-icon {
+  background: #D3425F;
+}
+
+.flying-icon {
+  background: #A1BBEC;
+}
+
+.ghost-icon {
+  background: #5F6DBC;
+}
+
+.grass-icon {
+  background: #5FBD58;
+}
+
+.ground-icon {
+  background: #DA7C4D;
+}
+
+.ice-icon {
+  background: #75D0C1;
+}
+
+.normal-icon {
+  background: #A0A29F;
+}
+
+.poison-icon {
+  background: #B763CF;
+}
+
+.psychic-icon {
+  background: #FA8581;
+}
+
+.rock-icon {
+  background: #C9BB8A;
+}
+
+.steel-icon {
+  background: #5695A3;
+}
+
+.water-icon {
+  background: #539DDF;
+}

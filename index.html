@@ -17,29 +17,134 @@
     <link rel="stylesheet" href="assets/css/pokedex.css" />
   </head>
   <body>
-    <section class="content">
-      <h1>Pokédex</h1>
+    <section class="main">
+      <div class="content">
+        <h1>Pokédex</h1>
+        <div class="search">
+          <div class="box-input">
+            <span class="search-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#5d5e7d" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg>
+            </span>
+            <input type="text" placeholder="Name or number" >
+          </div>
+          <button class="filter" id="filterButton" onClick="openFilterBox()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#f5fbfb" class="bi bi-filter" viewBox="0 0 16 16">
+              <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+            </svg>
+          </button>
+        </div>
 
-      <div class="cards">
-        <ol id="pokemonList" class="pokemons">
-          <!-- pokemon here -->
-        </ol>
+        <div id="filterBox" class="filter-box hidden">
+          <div class="filter-box-content">
+              <div class="header-filter">
+                <h2>Filtros</h2>
+                <span class="close-button" id="closeButton" onClick="closeFilterBox()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="filters">
+                <label>
+                  <input type="checkbox" name="normal">
+                  <span>Normal</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="fire">
+                  <span>Fire</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="water">
+                  <span>Water</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="grass">
+                  <span>Grass</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="flying">
+                  <span>Flying</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="fighting">
+                  <span>Fighting</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="poison">
+                  <span>Poison</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="electric">
+                  <span>Electric</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="ground">
+                  <span>Ground</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="rock">
+                  <span>Rock</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="psychic">
+                  <span>Psychic</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="ice">
+                  <span>Ice</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="bug">
+                  <span>Bug</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="ghost">
+                  <span>Ghost</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="steel">
+                  <span>Steel</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="dragon">
+                  <span>Dragon</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="dark">
+                  <span>Dark</span>
+              </label>
+              <label>
+                  <input type="checkbox" name="fairy">
+                  <span>Fairy</span>
+              </label>
+              </div>
+
+              <!-- Adicione mais filtros conforme necessário -->
+          </div>
+        </div>
+
+        <div class="cards">
+          <ol id="pokemonList" class="pokemons">
+            <!-- pokemon here -->
+          </ol>
+        </div>
+
       </div>
-
+        <img src="/assets/typesIcons/" alt="">
       <div class="pagination">
         <button id="loadMoreButton">
           LoadMore
         </button>
       </div>
       <!-- types -->
-      <!-- <ol class="types">
-        ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-      </ol> -->
+
     </section>
 
     <!-- JS -->
     <script src="assets/js/pokemon-model.js"></script>
-    <script src="assets/js/api.js"></script>
+    <script src="assets/js/pokeapi.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/details.js"></script>
   </body>

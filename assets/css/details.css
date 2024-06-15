@@ -1,15 +1,336 @@
 
+
 .content {
-  padding: 1rem;
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   height: 100vh;
 }
 
 .header {
   display: flex;
+  flex-direction: column;
+  margin: 0 1.5rem;
+}
+
+.header .return {
+  margin: 1.5rem 0 1rem 0;
+  cursor: pointer;
+}
+
+.information {
+  display: flex;
   justify-content: space-between;
 }
 
+.information .poke-name {
+  text-transform: capitalize;
+  margin: 0 0 .5rem 0;
+}
+
+.information .id-and-genus {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.id-and-genus .poke-number {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: right;
+  margin:  .8rem 0;
+}
+
+.id-and-genus .genus {
+  margin-bottom: .3rem;
+}
+
+.types {
+  display: flex;
+}
+
+.types .type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .2rem .5rem;
+  border-radius: 1rem;
+  margin-right: .5rem;
+  font-size: .7rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.type img {
+  width: 25px;
+  height: 25px;
+}
+
+.type span {
+  margin-right: .5rem;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0rem -3rem 0rem;
+  position: relative;
+  z-index: 2;
+}
+
+.poke-image {
+  height: 250px;
+}
+
+.poke-image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.details-background {
+  border-radius: 2rem 2rem 0 0;
+  background-color: #f5fbfb;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.details {
+  padding: 1.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.details .details-menus {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-menus span {
+    font-weight: 700;
+    cursor: pointer;
+    color: #6567818f;
+    transition: color .3s;
+}
+
+.details-menus span:hover {
+  color: #2e3057;
+}
+
+.details-menus .active {
+  color: #2e3057
+}
+
+.details .line {
+  border-top: 1px solid #ededed;
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+.about .description {
+  text-transform: none;
+}
+
+.about .measures {
+  margin: 2rem 0 2rem 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgb(0, 0, 0, .2);
+}
+
+.measures .titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titles span {
+  width: 100%;
+  color: #6567818f;
+}
+
+.measures .values {
+  display: flex;
+  justify-content: space-between;
+}
+
+.values span {
+  width: 100%;
+  text-transform: lowercase;
+}
+
+.about .breending {
+  margin: 1rem 0;
+
+}
+
+.breending .titles {
+  width: 100%;
+  color: #6567818f;
+}
+
+.breending .eggGroups {
+  display: flex;
+  justify-content: space-between;
+}
+
+.breending .groups {
+  width: 100%;
+}
+
+.stats .stats-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-box .stat-box-value {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-name {
+  margin-bottom: .5rem;
+}
+
+.stat-box-value div {
+  margin-bottom: .5rem;
+}
+
+.stat-indicator {
+  margin-left: 1.5rem;
+  width: 200px;
+  border-radius: 1rem;
+  height: 6px;
+  background-color: #e0e0e0;
+}
+
+.stat-indicator .bar {
+  border-radius: 1rem;
+  height: 6px;
+  margin: 0;
+  transition: all 0.2s;
+}
+
+.stat-indicator .bar.critical {
+  background-color: #f2c94c;
+}
+
+.stat-indicator .bar.warning {
+  background-color: #42e392;
+}
+
+.stat-indicator .bar.safe {
+  background-color: #2ecc71;
+}
+
+.loading * {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header:not(.loading) img {
+  animation: scaleIn 1s forwards;
+}
+
+.details-background:not(.loading-details) {
+  animation: slideFromAbove 1s forwards;
+}
+
+.return:not(.loading) {
+  animation: slideFromAbove 1s forwards;
+}
+
+.id-and-genus:not(.loading) {
+  animation: slideFromRight 1s forwards;
+}
+
+.name-and-types:not(.loading) {
+  animation: slideFromLeft 1s forwards;
+}
+
+.loading *::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #e0e0e0, #ebebeb, #e0e0e0);
+  width: 101%;
+  height: 101%;
+  border-radius: 1rem;
+  background-size: 400%;
+  animation: loading 1s linear infinite;
+}
+
+.loading-content {
+  background-color: #f5fbfb;
+}
+
+.loading-details {
+  background-color: #f4f4f4;
+}
+
+/* keyframes */
+
+@keyframes loading {
+  0%{
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(60%);
+  }
+  to {
+    transform: scale(100%)
+  }
+}
+
+@keyframes slideFromAbove{
+  from {
+    transform: translateY(-10%);
+  }
+  to {
+    transform: translateY(0)
+  }
+}
+
+@keyframes slideFromRight{
+  from {
+    transform: translateX(50%);
+  }
+  to {
+    transform: translateX(0)
+  }
+}
+
+@keyframes slideFromLeft{
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0)
+  }
+}
+
+/*
 .header .return {
   align-self: flex-start;
   margin:  20px 20px 35px 20px;
@@ -50,22 +371,32 @@
 }
 
 #poke-image img {
+  object-fit: contain;
+  height: 225px;
   width: 225px;
 }
 
-.details h2{
+.details .details-menus {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.4rem;
+  margin: 1rem;
 }
 
-.types {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
+.details span{
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 1rem;
+  cursor: pointer;
+  color: #656781;
+}
 
+.details span:hover {
+  color: #2e3057;
+}
+
+.details .active {
+  color: #2e3057
 }
 
 .types .type {
@@ -78,6 +409,47 @@
   text-transform: capitalize;
 }
 
+.abilities div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.abilities .ability {
+  background-color: #5d5e7d;
+  padding: 0.825rem;
+  border-radius: 1rem;
+  margin: 0.6rem 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #ebf3f5;
+}
+
+.stats .stats-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats .stats-grid {
+  max-width: 380px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.stats .stat {
+  padding: 0.825rem;
+  border-radius: 1rem;
+  margin: 0.6rem 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  text-align: justify;
+}
+
 @media screen and (min-width: 992px) {
   .content {
     max-width: 992px;
@@ -86,4 +458,4 @@
     padding-bottom: 6rem;
     border-radius: .5rem;
   }
-}
+} */
