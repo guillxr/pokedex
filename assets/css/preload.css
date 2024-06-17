@@ -1,0 +1,64 @@
+.preload {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.objLoad,
+.objLoadM,
+.objLoadL,
+.objLoadXL {
+  margin: .5rem;
+  border-radius: 1rem;
+  background: linear-gradient(-45deg, #e0e0e0, #ebebeb, #e0e0e0);
+  background-size: 400%;
+  max-width: 175px;
+  height: 235px;
+  animation: loading 1s linear infinite;
+}
+
+@media screen and (min-width: 340px) {
+  .preload {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width:495px) {
+  .preload {
+  grid-template-columns: repeat(3, 1fr);
+  }
+  .objLoadM {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .preload {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .objLoadL {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .preload {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .objLoadXL {
+    display: block;
+  }
+}
+
+@keyframes loading {
+  0%{
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
