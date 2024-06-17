@@ -13,7 +13,6 @@ async function lazyLoading() {
 
   cardsList.forEach((pokemonImage) => {
     if(pokemonImage.getBoundingClientRect().top < window.innerHeight + 350) {
-      console.log('oi')
       pokemonImage.src = pokemonImage.getAttribute('data')
       pokemonImage.removeAttribute('data')
     }
