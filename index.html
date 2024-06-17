@@ -2,7 +2,7 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=], initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
     <!-- css normalize -->
     <link
@@ -15,6 +15,7 @@
     <!-- css -->
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/pokedex.css" />
+    <link rel="stylesheet" href="assets/css/preload.css">
   </head>
   <body>
     <section class="main">
@@ -27,7 +28,7 @@
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
               </svg>
             </span>
-            <input type="text" placeholder="Name or number" >
+            <input id="search-input" type="text" placeholder="Name or number" >
           </div>
           <button class="filter" id="filterButton" onClick="openFilterBox()">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#f5fbfb" class="bi bi-filter" viewBox="0 0 16 16">
@@ -35,9 +36,8 @@
             </svg>
           </button>
         </div>
-
         <div id="filterBox" class="filter-box hidden">
-          <div class="filter-box-content">
+          <div id="filter-box-content" class="filter-box-content">
               <div class="header-filter">
                 <h2>Filtros</h2>
                 <span class="close-button" id="closeButton" onClick="closeFilterBox()">
@@ -120,32 +120,40 @@
                   <span>Fairy</span>
               </label>
               </div>
-
-              <!-- Adicione mais filtros conforme necessário -->
           </div>
         </div>
 
-        <div class="cards">
+        <div id="preload" class="preload">
+          <div class="objLoad"></div>
+          <div class="objLoad"></div>
+          <div class="objLoad"></div>
+          <div class="objLoad"></div>
+          <div class="objLoad"></div>
+          <div class="objLoad"></div>
+          <div class="objLoadM hidden"></div>
+          <div class="objLoadM hidden"></div>
+          <div class="objLoadM hidden"></div>
+          <div class="objLoadL hidden"></div>
+          <div class="objLoadL hidden"></div>
+          <div class="objLoadL hidden"></div>
+          <div class="objLoadXL hidden"></div>
+          <div class="objLoadXL hidden"></div>
+          <div class="objLoadXL hidden"></div>
+        </div>
+
+        <div id="cards" class="cards">
           <ol id="pokemonList" class="pokemons">
             <!-- pokemon here -->
           </ol>
         </div>
-
-      </div>
-        <img src="/assets/typesIcons/" alt="">
-      <div class="pagination">
-        <button id="loadMoreButton">
-          LoadMore
-        </button>
-      </div>
-      <!-- types -->
-
     </section>
 
     <!-- JS -->
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/pokedex.js"></script>
     <script src="assets/js/pokemon-model.js"></script>
-    <script src="assets/js/pokeapi.js"></script>
+    <!-- <script src="assets/js/pokeapi.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/details.js"></script>
+    <script src="assets/js/details.js"></script> -->
   </body>
 </html>
