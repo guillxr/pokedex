@@ -11,7 +11,7 @@ class Pokemon {
   height;
   weight;
   description;
-  eggGroup;
+  baseExp;
 }
 
 class Species {
@@ -19,4 +19,5 @@ class Species {
   eggGroups;
   eggCycle;
   genus;
+  genderRate;
 }
