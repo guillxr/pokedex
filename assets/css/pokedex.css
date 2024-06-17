@@ -5,8 +5,8 @@ body {
 .main {
   padding: 1rem;
   background-color: #f5fbfb;
-}
 
+}
 .content {
   display: flex;
   flex-direction: column;
@@ -73,6 +73,11 @@ body {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
   transition: display .3s;
+  animation: opacity .2s ease-in-out forwards;
+}
+
+.filter-box.closing {
+  animation: opacityReverse 1s backwards;
 }
 
 .filter-box-content {
@@ -84,6 +89,12 @@ body {
   border-radius: 1rem;
   top: -10px;
   position: relative;
+  transform-origin: top right;
+  animation: growAndMove .5s ease-in-out forwards;
+}
+
+.filter-box-content.closing {
+  animation: shrinkAndMove .5s ease-in-out backwards;
 }
 
 .header-filter {
@@ -146,6 +157,10 @@ body {
 
 /* cards pokemons */
 
+.cards {
+  display: none;
+}
+
 .pokemons {
   margin: 0;
   padding: 0;
@@ -159,14 +174,15 @@ body {
   padding: 1rem;
   border-radius: 1rem;
   cursor: pointer;
+  height: 255px;
 }
-
 .card {
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .card img {
@@ -178,13 +194,13 @@ body {
 .card .information {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
 .card .types {
   padding: 0;
   margin-bottom: .5rem;
-  margin-top: -.5rem;
   display: flex;
   list-style: none;
 }
@@ -204,6 +220,11 @@ body {
   text-transform: capitalize;
   margin-bottom: 0.3rem;
   font-weight: 700;
+  text-align: center;
+}
+
+.card .long-name {
+  font-size: .8rem;
 }
 
 .card .number {
@@ -211,26 +232,6 @@ body {
   opacity: .8;
   font-size: .775rem;
   font-weight: 500;
-}
-
-.pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 1rem;
-}
-
-.pagination button {
-  padding: .25rem .5rem;
-  margin: .25rem 0;
-  font-size: .625rem;
-  background-color: #6c79db;
-  color: #fff;
-  border: none;
-  border-radius: 1rem;
-  cursor: pointer;
 }
 
 .hidden {
@@ -268,10 +269,7 @@ body {
   .pokemons {
     grid-template-columns: repeat(4, 1fr);
   }
-  .pokemon {
-    width: 164px;
-    height: 244px;
-  }
+
   .filter-box-content {
     left: 188px;
   }
@@ -286,5 +284,62 @@ body {
   }
   .filter-box-content {
     left: 277px;
+  }
+}
+
+
+@keyframes growAndMove {
+  0% {
+    transform: scale(0);
+    opacity: .5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shrinkAndMove {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: .5;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityReverse {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5vh);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pokemon, .card {
+    view-timeline-name: --item-timeline;
+    animation: slide-fade-in both;
+    animation-timeline: --item-timeline;
+    animation-range: contain -50% contain 50%;
   }
 }
