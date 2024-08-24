@@ -68,7 +68,7 @@ async function renderPokemon() {
     <div id="content" class="content ${pokemon.type} loading-content">
       <div class="header loading">
         <span alt="Voltar" class="return" onClick="location.href='index.html'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000" class="bi bi-arrow-left" viewBox="0 0 16 16">
+          <svg xmlns="https://www.w3.org/2000/svg" width="32" height="32" fill="#000" class="bi bi-arrow-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
           </svg>
         </span>
@@ -129,7 +129,7 @@ async function renderPokemon() {
                     <span>
                       ${pokemon.species.genderRate >= 1
                         ? `
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0000FF" class="bi bi-gender-male" viewBox="0 0 16 16">
+                          <svg xmlns="https://www.w3.org/2000/svg" width="16" height="16" fill="#0000FF" class="bi bi-gender-male" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/>
                           </svg>
                           ${genders.maleGender}%
@@ -139,7 +139,7 @@ async function renderPokemon() {
                     <span>
                       ${pokemon.species.genderRate >= 1
                         ? `
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF007F" class="bi bi-gender-female" viewBox="0 0 16 16">
+                          <svg xmlns="https://www.w3.org/2000/svg" width="16" height="16" fill="#FF007F" class="bi bi-gender-female" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5"/>
                           </svg>
                           ${genders.feminineGender}%

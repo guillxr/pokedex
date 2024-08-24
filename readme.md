@@ -4,7 +4,7 @@ Desenvolvi uma Pokédex utilizando JavaScript, HTML e CSS, integrando a PokeAPI.
 
 ## 🛠️ Construído com
 
-* [JavaScript](http://www.dropwizard.io/1.0.2/docs/) - A linguagem de programação usada para a lógica e manipulação do DOM
+* [JavaScript](https://www.dropwizard.io/1.0.2/docs/) - A linguagem de programação usada para a lógica e manipulação do DOM
 * [HTML](https://maven.apache.org/) - A linguagem de marcação usada para estruturar o conteúdo da web
 * [CSS](https://rometools.github.io/rome/) - A linguagem de estilo usada para estilizar a apresentação da web
 
