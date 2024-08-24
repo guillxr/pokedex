@@ -44,29 +44,16 @@ function capitalizeFirst(str) {
   });
 }
 
-async function pokemonsStorage() {
-  if (!localStorage.getItem('pokemons')) {
-    await fetchAndLogPokemons();
-  }
-  return JSON.parse(localStorage.getItem('pokemons'));
-}
-
 async function renderPokemon() {
-  try {
-    const pokemons = await pokemonsStorage();
-
-    const pokemon = pokemons.find(pokemon => pokemon.number == pokemonId)
-
-    const pokemonCard = document.getElementById('pokemonDetails');
+  getPokemonById(pokemonId).then((pokemon) => {
 
     const stats = {};
     const maxStats = [255, 190, 250, 194, 250, 200];
-
-    pokemon.stats.forEach((stat, index) => {
-      const statValue = stat.stat;
+    pokemon.stats.forEach((pokeStat, index) => {
+      const statValue = pokeStat.stat;
       const maxStat = maxStats[index];
-      const statName = stat.name.replace("special-", "sp");
-
+      const statName = pokeStat.name.replace("special-", "sp");
+    
       stats[`${statName}Value`] = statValue;
       stats[`${statName}Percent`] = (statValue / maxStat) * 100;
     });
@@ -258,9 +245,7 @@ async function renderPokemon() {
             document.querySelector('.details-menus').classList.remove('loading')
             document.querySelector('.details-background').classList.remove('loading-details')
           });
-  } catch (error) {
-    console.error('Ocorreu um erro ao renderizar o pokemon:', error);
-  }
+  
+  })
 }
-
 renderPokemon()

@@ -1,68 +1,53 @@
 
-const filterBox = document.getElementById('filterBox');
+const filterBox = document.getElementById('filterBox')
 const filterBoxContent = document.getElementById('filter-box-content')
 const searchInput = document.getElementById('search-input')
+const pokemonList = document.getElementById('pokemonList')
+const pokemonListFiltered = document.getElementById('pokemonListFiltered')
 
-async function loading() {
-  document.getElementById('preload').style.display="none"
-  document.getElementById('cards').style.display="block"
-}
-
-async function lazyLoading() {
-  const cardsList = document.querySelectorAll('[data]')
-
-  cardsList.forEach((pokemonImage) => {
-    if(pokemonImage.getBoundingClientRect().top < window.innerHeight + 350) {
-      pokemonImage.src = pokemonImage.getAttribute('data')
-      pokemonImage.removeAttribute('data')
-    }
-  })
-}
-
-async function pokemonsStorage() {
-  if (!localStorage.getItem('pokemons')) {
-    await fetchAndLogPokemons();
-  }
-  await loading()
-  return JSON.parse(localStorage.getItem('pokemons'));
-}
+let offset = 0
+const limit = 40
+let isLoading = false
 
 async function renderPokemonList() {
-  const pokemons = await pokemonsStorage();
-  const pokemonList = document.getElementById('pokemonList');
+  if (isLoading) return;
+    isLoading = true;
 
-  const newHtml = pokemons.map((pokemon) => {
-
-    const pokemonName = pokemon.name.replace(/-/g, " ")
-    const fontSizeName = pokemonName.length > 19 ? 'long-name' : ''
-
-    return `<li class="pokemon ${pokemon.type}" onClick="location.href='details.html?id=${pokemon.number}'">
-      <div class="card">
-        <img id="pokemon-image" class="dynamic-image" src="assets/images/loading/eclipse-half.svg" data="${pokemon.photo}" alt="${pokemon.name}" onerror="this.onerror=null; this.src='${pokemon.photoSecondary}'"/>
-        <div class="information">
-          <ol class="types">
-            ${pokemon.types.map((type) => `<li class="type"><img src="assets/images/typesIcons/${type}.svg" alt="${type}"/></li>`).join('')}
-          </ol>
-          <span id="pokemonName" class="name ${fontSizeName}">${pokemonName}</span>
-          <span class="number">#${pokemon.number.toString().padStart(3, '0')}</span>
+  getPokemons(offset, limit).then((pokemons) => {
+    const newHtml = pokemons.map((pokemon) => {
+      const pokemonName = pokemon.name.replace(/-/g, " ")
+      const fontSizeName = pokemonName.length > 19 ? 'long-name' : ''
+  
+      return `<li class="pokemon ${pokemon.type}" onClick="location.href='details.html?id=${pokemon.number}'">
+        <div class="card">
+          <img id="pokemon-image" class="dynamic-image" src="${pokemon.photo}" alt="${pokemon.name}" onerror="this.onerror=null; this.src='${pokemon.photoSecondary}'"/>
+          <div class="information">
+            <ol class="types">
+              ${pokemon.types.map((type) => `<li class="type"><img src="assets/images/typesIcons/${type}.svg" alt="${type}"/></li>`).join('')}
+            </ol>
+            <span id="pokemonName" class="name ${fontSizeName}">${pokemon.name}</span>
+            <span class="number">#${pokemon.number.toString().padStart(3, '0')}</span>
+          </div>
         </div>
-      </div>
-    </li>`
-  }).join('')
-  pokemonList.innerHTML = newHtml;
+      </li>`
+    }).join('')
 
-  await lazyLoading()
+    pokemonList.innerHTML += newHtml;
+    offset += limit;
+    isLoading = false;
+  });
 }
 
-renderPokemonList();
+window.addEventListener("scroll", () => {
+  const scrollPosition = window.innerHeight + window.scrollY;
+  const threshold = document.body.offsetHeight - (4 * 255); // 2 cards de 255px cada
 
-window.onload = () => {
-  lazyLoading()
-}
+  if (scrollPosition >= threshold) {
+      renderPokemonList();
+  }
+});
 
-window.onscroll = () => {
-  lazyLoading()
-}
+renderPokemonList()
 
 function openFilterBox() {
   filterBox.classList.remove('hidden');
@@ -110,7 +95,6 @@ async function handleSearch() {
     const pokemonNumber = numberElement.textContent.substring(1);
     if (pokemonName.includes(searchTerm) || pokemonNumber.includes(searchTerm)) {
       pokemonElement.classList.remove('hidden');
-      lazyLoading()
     } else {
       pokemonElement.classList.add('hidden');
     }

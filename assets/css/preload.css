@@ -9,11 +9,7 @@
 .objLoadXL {
   margin: .5rem;
   border-radius: 1rem;
-  background: linear-gradient(-45deg, #e0e0e0, #ebebeb, #e0e0e0);
-  background-size: 400%;
-  max-width: 175px;
-  height: 235px;
-  animation: loading 1s linear infinite;
+
 }
 
 @media screen and (min-width: 340px) {

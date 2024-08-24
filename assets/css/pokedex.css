@@ -157,10 +157,6 @@ body {
 
 /* cards pokemons */
 
-.cards {
-  display: none;
-}
-
 .pokemons {
   margin: 0;
   padding: 0;
@@ -176,6 +172,7 @@ body {
   cursor: pointer;
   height: 255px;
 }
+
 .card {
   display: flex;
   flex-direction: column;
@@ -326,20 +323,4 @@ body {
   100% {
     opacity: 0;
   }
-}
-
-@keyframes slide-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(5vh);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .pokemon, .card {
-    view-timeline-name: --item-timeline;
-    animation: slide-fade-in both;
-    animation-timeline: --item-timeline;
-    animation-range: contain -50% contain 50%;
-  }
-}
+}   
